@@ -1,0 +1,76 @@
+/* 
+    Created on : 28 ene 2024, 14:48:42
+    Author     : HP Wil
+*/
+
+
+footer p{
+    background: black;
+    color: white;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+.img{ ;
+    margin-right: 20px;
+    
+}
+
+.colo{
+    flex-grow: 1;
+}
+
+.circu{
+     width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+}
+
+
+
+.circu img{
+     width: 100%;
+      height: auto;
+      border-radius: 50%;
+      display: block;
+}
+
+.contenedor{
+     text-align: center;
+}
+
+.abajo{
+    margin-top: 10px;
+}
+.cateim{
+    margin-top:10px;
+    color:black;
+    text-align: center;
+    font-size: 20px; 
+    text-decoration: none;
+}
+
+.image{
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h1{
+    background-color: black;
+    color: white;
+    font-size:32px;
+}
+
+
+
+

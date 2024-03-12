@@ -1,0 +1,123 @@
+
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: black;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+}
+
+.titulo{
+    background-color: rgb(90, 20, 156);
+    margin: 0%;
+    text-align: center;
+    color: white;
+    border: 5px solid black;
+}
+body{
+    font-family: sans-serif;
+    padding: 80px 20px 0;
+}
+
+
+.catego{
+    background-color: black;
+    height: 80px;
+    position: solid;
+    width: 100%;
+    top:0;
+    left:0;
+
+}
+.categoria{
+    background-color:grey;
+    height: 150px;
+    position: solid;
+    width: 50%;
+    border: 5px solid black;
+}
+
+.formulario{
+    background-color: black;
+    border: 5px solid rgb(90, 20, 156);
+    position: solid;
+    color: white;
+    display: flex;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 80px;
+    border: 5px solid rgb(90, 20, 156);
+
+}
+
+.nav-menu{
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+    line-height: 80px;
+}
+
+.nav-cate{
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+    line-height: 80px;
+
+}
+
+.nav-menu-item{
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.nav-menu-link{
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.nav-menu-link:hover{
+    background-color: #024070 ;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.nav-inicio{
+    border: 5px solid white;
+
+}
+
+#imagen{
+    padding: 0;
+  margin: 1%;
+  box-sizing: border-box;
+}
+#imagen{
+     display: flex;
+  width: 800px;
+  height: 400px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
