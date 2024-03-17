@@ -1,34 +1,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:th="http://thymeleaf.org">
-   <head th:fragment="head">
+      xmlns:th="http://thymeleaf.org"
+      lang="en">
+    <head th:fragment="head" >
         <title>Store</title>
         <meta charset="UTF-8"/>
         <link href="@{/webjars/bootstrap/js/bootstrap.min.js}" rel="stylesheet" /> 
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/> 
-       <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="css/menu.css" rel="stylesheet" type="text/css"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script> 
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script> 
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
-       
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     </head>
     <body>
-         <header th:fragment="header" class="header">
-            <nav class="nav">
-                <h1><a href="index.html" class="nav-link logo">Tendencia Elegante</a></h1>
-                <ul class="nav-menu">
-                    <li class="nav-menu-item"><a href="categorias.html" class="nav-link nav-menu-link ">Categorias</a></li>
-                    <li class="nav-menu-item"><a href="InicioSesion.html" class="nav-link nav-menu-link nav-inicio">Inicio de sesion</a></li>
-                    <li class="nav-menu-item"><a href="registro.html" class="nav-link nav-menu-link nav-inicio">Registro</a></li>                              
-                </ul>                               
-            </nav>
-        </header>
-         
-        
-        <footer th:fragment="footer">
-            <br/>
-            <p>Derechos Reservados &COPY;2024</p>
 
-        </footer>
-    </body>
-</html>
+        <header th:fragment="header" class="header">
+
+            <a th:href="@{/}"class="nav-link logo">Tienda</a>                          
+            <br>
+                <br>
+                    <ul class="nav-menu">                        
+                        <li class="nav-menu-item"><a th:href="@{/}" class="nav-link nav-menu-link ">Inicio</a></li>
+                        <li class="nav-menu-item"><a th:href="@{/categoria/listado}" class="nav-link nav-menu-link ">Categoría</a></li>
+                        <li class="nav-menu-item"><a href="@{/}" class="nav-link nav-menu-link">Prendas</a></li>                              
+                        <div class="icon-esquin">
+                            <a><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="login.html"> <i class="fa-solid fa-user"></i></a>
+                        </div>
+                    </ul>        
+                    <br>
+                        </header>
+                        <aside th:fragment="aside">
+                            <br/>
+                            <br/>
+                            <h2 class="titulo">Tienda </h2>
+                            <br/>
+                            <p> <b>Bienvenido a nuestra exclusiva tienda de ropa, un destino elegante que celebra la moda para mujeres, niños y hombres con un toque refinado. 
+                                    Nuestra boutique es un santuario de estilo donde la sofisticación se encuentra con la comodidad, y la elegancia se fusiona con la practicidad.
+                                    Para las mujeres, ofrecemos una selección cuidadosamente curada de prendaars que abrazan la feminidad y la modernidad. Desde vestidos de noche deslumbrantes hasta conjuntos de trabajo pulidos, cada pieza es una obra maestra de diseño que resalta la belleza única de cada mujer.
+                                    Los niños pueden explorar la moda desde temprana edad con nuestra colección infantil. Con prendas adorables y a la moda, hemos creado un espacio donde los pequeños pueden expresar su personalidad y sentirse cómodos al mismo tiempo.
+                                    Para los hombres que buscan elegancia sin esfuerzo, nuestra sección masculina presenta trajes a medida, prendas casuales y accesorios de calidad que reflejan una masculinidad moderna y distinguida.</b></p>            
+                            <br/>
+                        </aside>
+                        <footer th:fragment="footer_todo" class="footer">
+                            <br>
+                                <p>Nuestras Redes</p>
+                                <div class="sociales" aria-hidden="true">                 
+                                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram" ></i></a>
+                                    <a href="https://www.whatsapp.com/?lang=es_LA"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="https://www.facebook.com/?locale=es_LA"><i class="fa-brands fa-facebook"></i></a>                    
+                                </div>
+                        </footer>
+                        </body>
+                        </html>

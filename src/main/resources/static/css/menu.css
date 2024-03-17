@@ -5,16 +5,17 @@
 }
 
 .header{
-    background-color: black;
-    height: 80px;
+    background-color: #1a1a1a;
+    height: 100px;
     position: fixed;
     width: 100%;
     top:0;
     left:0;
+    text-align: center;
 }
 
 .titulo{
-    background-color: rgb(90, 20, 156);
+    background-color: #740af5;
     margin: 0%;
     text-align: center;
     color: white;
@@ -45,16 +46,16 @@ body{
 
 .formulario{
     background-color: black;
-    border: 5px solid rgb(90, 20, 156);
+    border: 5px solid #740af5;
     position: solid;
     color: white;
     display: flex;
 }
 
 .nav{
-    display: flex;
-    justify-content: space-between;
     margin: 0 auto;
+    text-align: center;
+    justify-content: space-between;
 }
 
 .nav-link{
@@ -63,20 +64,28 @@ body{
 }
 
 .logo{
+    justify-content: center;
+    align-items: center ;
     font-size: 30px;
     font-weight: bold;
-    padding: 0 40px;
-    line-height: 80px;
-    border: 5px solid rgb(90, 20, 156);
-
+    padding: 0 60px;
+    line-height:30px;
+    
+       
 }
 
 .nav-menu{
-    display: flex;
-    margin-right: 40px;
+    justify-content: center;
+    display: flex ;
+    flex-direction: initial;
+    margin-right: 10px;
     list-style: none;
-    line-height: 80px;
+    line-height: 25px;
+    font-weight: normal; 
+    margin-left: 500px ;
 }
+
+
 
 .nav-cate{
     display: flex;
@@ -89,6 +98,7 @@ body{
 .nav-menu-item{
     font-size: 18px;
     margin: 0 10px;
+
 }
 
 .nav-menu-link{
@@ -99,25 +109,21 @@ body{
 .nav-menu-link:hover{
     background-color: #024070 ;
     padding: 8px 12px;
-    border-radius: 10px;
-    transition: 0.5s;
-}
-
-.nav-inicio{
-    border: 5px solid white;
-
+    border-radius: 120px;
+    transition: 0.2s;
 }
 
 #imagen{
     padding: 0;
-  margin: 1%;
-  box-sizing: border-box;
+    margin: 1%;
+    box-sizing: border-box;
 }
 #imagen{
-     display: flex;
-  width: 800px;
-  height: 400px;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    width: 800px;
+    height: 400px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 
