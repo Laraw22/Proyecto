@@ -1,86 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">    
-    <body>
-        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">   
-                        <button 
-                            type="button" 
-                            class="btn btn-primary btn-block" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#agregarRopa">
-                            <i class="fas fa-plus"></i> Agregar ropa
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2 Fragmento para agregar ropa, es la ventana modal -->
-        <section th:fragment="agregarRopa">
-            <div id="agregarRopa" 
-                 class="modal fade" 
-                 tabindex="-1" 
-                 aria-labelledby="exampleModalLabel" 
-                 aria-hidden="true">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title">Agregar Ropa</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div> 
-                        <form th:action="@{/ropa/guardar}" th:object="${ropa}"
-                              method="POST" class="was-validated" enctype="multipart/form-data">
-
-                            <input type="hidden" name="nuevaImagen" value="NO"/>
-                            <div class="modal-body">                              
-                                <div class="mb-3">
-                                    <label for="descripcion">Descripcion</label>
-                                    <input type="text" class="form-control" name="descripcion" required="true"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="detalle">Talla</label>                                    
-                                    <textarea class="form-control" name="detalle" rows="3"></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="precio">Precio</label>                                    
-                                    <input type="number" class="form-control" name="precio" required="true"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="existencias">Existencias</label>                                    
-                                    <input type="number" class="form-control" name="existencias" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">Imagen</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);" >
-                                        <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="activo">Activo</label>
-                                    <input class="form-check-input" 
-                                           type="checkbox" 
-                                           name="activo" 
-                                           id="activo">
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+   <!--le falta cambiar todo pero por ahorita se muestra solo mover unas cosas y ya estaria -->
+  
         <!-- 3 Sección principal para mostrar la informaccion de la entidad ropa -->
         <section th:fragment="listadoRopas" id="ropas">
             <div class="container">
@@ -97,10 +19,9 @@
                                             <th class="text-center">Descripcion</th>
                                             <th class="text-center">Talla</th>
                                             <th class="text-center">Precio</th>
-                                            <th class="text-center">Existencias</th>
-                                            <th class="text-center">Total]</th>
+                                            <th class="text-center">Existencias</th>                                            
                                             <th class="text-center">Activo</th>
-                                            <th class="text-center">Categoria</th>
+                                            <th class="text-center">Total</th>
                                             <th></th><th></th></tr>
                                     </thead>
                                     <tbody>
@@ -109,16 +30,18 @@
                                             <td class="fs-6">[[${ropa.descripcion}]]</td>
                                             <td class="fs-6">[[${ropa.talla}]]</td>
                                             <td class="text-end">[[${#numbers.formatDecimal(ropa.precio, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
-                                            <td class="text-center">[[${ropa.existencias}]]</td>
-                                            <td class="text-end">[[${#numbers.formatDecimal(ropa.precio*ropa.existencias, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
+                                            <td class="text-center">[[${ropa.existencias}]]</td>                                            
                                             <td  class="text-center" th:text="${ropa.activo} ? 'Activa' : 'Inactiva'" />                                            
+                                            <td class="text-end">[[${#numbers.formatDecimal(ropa.precio*ropa.existencias, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
                                             <td><a th:href="@{/ropa/eliminar/}+${ropa.idRopa}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> Eliminar</a></td>
                                             <td>
                                                 <a th:href="@{/ropa/modificar/}+${ropa.idRopa}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i> Actualizar</a></td></tr>
+                                                    <i class="fas fa-pencil"></i> Actualizar</a></td>
+                                        </tr>
+                                        <hr>
                                     </tbody>
                                 </table>
 
@@ -132,7 +55,7 @@
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
                                 <h3>Total</h3>
-                                <h4 class="fs-2"><i class="fas fa-users"></i> $Total</h4>
+                                <h4 class="fs-2"><i class="fas fa-users"></i> </h4>
                             </div>
                         </div>
                     </div>
@@ -140,109 +63,4 @@
             </div>
         </section>
 
-        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
-        <section th:fragment="editarRopa">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <form method="POST"
-                          th:action="@{/ropa/guardar}" 
-                          th:object="${ropa}"
-                          class="was-validated"                          
-                          enctype="multipart/form-data">
-                        <input type="hidden" name="idRopa" th:field="*{idRopa}"/>
-                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
-                        <input type="hidden" name="nuevaImagen" value="NO"/>
-
-                        <section th:replace="~{ropa/fragmentos :: botonesEditar}"/>
-                        <div id=details>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4>AcualizarS</h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="mb-3">
-                                                    <label for="idRopa">Categoria</label>
-                                                    <select th:field="*{categoria.idRopa}"
-                                                            class="form-select" 
-                                                            aria-label="Default select example">
-                                                        <option th:each="c : ${categorias}" th:value="${c.idRopa}" th:text="${c.descripcion}">
-                                                        </option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="descripcion">Descripcion</label>
-                                                    <input type="text" class="form-control" 
-                                                           name="descripcion" th:field="*{descripcion}"
-                                                           required="true">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="detalle">[[#{</label>                                    
-                                                    <textarea class="form-control" 
-                                                              th:field="*{detalle}" rows="3"></textarea>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="precio">Precio</label>                                    
-                                                    <input type="number" class="form-control" 
-                                                           th:field="*{precio}" required="true"/>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="existencias">Existencias</label>                                    
-                                                    <input type="number" class="form-control" 
-                                                           th:field="*{existencias}" required="true"/>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="imagen">Imagen</label>
-                                                    <input class="form-control" type="file" name="imagenFile"
-                                                           onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${ropa.rutaImagen}}" alt="your image" height="200"/>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="activo">Activo</label>
-                                                    <input class="form-check-input" 
-                                                           type="checkbox" 
-                                                           th:field="*{activo}" 
-                                                           id="activo">
-                                                </div>     
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
-        <section th:fragment="botonesEditar">
-            <div class="container py-4 mb-4 bg-light">
-                <div class="row">
-                    <div class="col-md-4 d-grid">
-                        <a th:href="@{/ropa/listado}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> Regresar
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/ropa/eliminar/}+${ropa.idRopa}"
-                           class="btn btn-danger">
-                            <i class="fas fa-trash"></i> Eliminar
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> Guardar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </body>
-</html>
+       
