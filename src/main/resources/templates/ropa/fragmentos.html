@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    
+      xmlns:th="http://www.thymeleaf.org">    
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-        <section th:fragment="botonesAgregar" class="">
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
@@ -65,7 +64,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="activo">[[#{ropa.activo}]]</label>
+                                    <label for="activo">Activo</label>
                                     <input class="form-check-input" 
                                            type="checkbox" 
                                            name="activo" 
@@ -246,3 +245,4 @@
             </div>
         </section>
     </body>
+</html>
