@@ -3,13 +3,16 @@
       xmlns="http://www.w3.org/199/xhtml">      
     <head th:replace="~{layout/plantilla :: head}">     
         <title>Store</title>
-         
+
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         <br>
         <br>
+        
+        <section th:replace="~{ropa/fragmentos :: botonesAgregar}" />
         <br>
+
         <section th:replace="~{ropa/fragmentos :: listadoRopas}" />  
 
 

@@ -5,7 +5,7 @@
 }
 
 .header{
-    background-color: #1a1a1a;
+    background-color: #2a5b5a;
     height: 100px;
     position: fixed;
     width: 100%;
@@ -15,11 +15,11 @@
 }
 
 .titulo{
-    background-color: #740af5;
+    background-color: #2a5b5a;
     margin: 0%;
     text-align: center;
     color: white;
-    border: 5px solid black;
+    border: 3px double #64afa9;
 }
 body{
     font-family: sans-serif;
@@ -105,25 +105,14 @@ body{
     padding: 8px 12px;
     border-radius: 10px;
 }
-
 .nav-menu-link:hover{
-    background-color: #024070 ;
+    background:#0f2424;
     padding: 8px 12px;
     border-radius: 120px;
     transition: 0.2s;
+    
+    box-shadow: 0 0 5px var(--neon), 0 0 15px var(--neon), 0 0 30px var(--neon),
+    0 0 50px var(--neon);   
+   outline-color: transparent;
+  
 }
-
-#imagen{
-    padding: 0;
-    margin: 1%;
-    box-sizing: border-box;
-}
-#imagen{
-    display: flex;
-    width: 800px;
-    height: 400px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
