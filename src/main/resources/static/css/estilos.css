@@ -11,7 +11,7 @@
     border: 1px #FD1D1D;
     border-radius: 1px;
     background: #3e8e89;
-    box-shadow: 0 0 5px #64afa9;    
+    box-shadow: 0 0 5px #64afa9;
     padding: 15px;
 }
 
@@ -27,7 +27,7 @@
     align-items: center;
     text-decoration: none;
     transition: 0.5s;
-    background: #223f3e;   
+    background: #223f3e;
     font-size: 2.5em;
 }
 .sociales a:nth-child(1){
@@ -82,19 +82,14 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+
 }
 
 
-body{
-    background-image: url(../images/bg4.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
+
 .container{
     justify-content: center;
+    align-self: auto;
     display: flex;
     border: 30px #FD1D1D;
     border-radius: 20px;
@@ -102,14 +97,36 @@ body{
     box-shadow: 0 0 5px #2a5b5a;
     color:white;
     padding: 15px;
+    text-height: auto;
 }
-.container-agregar{    
+.container-agregar{
     justify-content: left;
     display: contents;
     border: 40px #FD1D1D;
     border-radius: 30px;
     background: white;
     box-shadow: 0 0 5px #2a5b5a;
+    -webkit-appearance: button;
+    transition: none;
+
+}
+.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+.py-4 mb-4 bg-light{
+    padding: 24px 0px;
+    margin: 0px 0px 24px;
+    line-height: 24px;
+    grid-area: auto;
+    background: white;
+}
+
+.btn-close{
+    align-items: flex-start;
+    display: inline-block;
+    font-family: system-ui;
+    grid-area: auto;
 }
 .table-dark{
     color: #0f2424;
@@ -121,10 +138,12 @@ body{
     justify-items: center;
 }
 .text{
-    text-align: center;    
+    text-align: center;
+    font-size: 14px;
+    text-height: auto;
 }
 
-.but
+
 .table{
     margin: 20px 20px 4% 10px;
     justify-content: center;
@@ -135,23 +154,33 @@ body{
 }
 .table-bordered{
     border: 5px double white;
-    
+
 }
 
 .btn{
+    transition: none;
+    user-select: none;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 20px;    
+    border-radius: 20px;
     color: white;
     text-height: auto;
     padding: 3px 6px;
     box-sizing: border-box;
-    display:flex;    
+    display:inline-block;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
 }
 .btn-primary{
     background: #2a5b5a;
-    padding: 10px 20px;
-   
+    padding: 10px;
+    border-radius: 5px;
+
+
+
 }
 .btn-danger{
     color: white;
@@ -161,10 +190,69 @@ body{
     color: white;
     background: #30716d;
 }
+.btn-close{
+    display:none;
+}
 .separador td{
     padding: 0px 4px;
     margin: 10px 5px 5px 8px;
 }
 .descrip_fs{
-   height: 5px;
+    height: 5px;
+}
+
+.modal-content{
+    background: #3e8e89;
+    color:white;
+    margin: 1% 5px 5px 8px;
+    padding: 1% 4px;
+    border:  5px solid #64afa9;
+    container:  center;
+    display: none;
+    flex-direction: column;
+    grid-area:auto;
+    width: 50%;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+    pointer-events: none;
+}
+.modal{
+     background: #3e8e89;
+     border-radius: 20px;
+     box-shadow: 0 2px 4px #64afa9;
+     width: 50%;
+}
+.btn-agregar{
+    transition: none;
+    -webkit-appearance: button;
+}
+
+.DIVImagenPrenda{
+    background-color: #30716d;
+}
+
+.ImagenPrenda{
+    width: 120px;
+    height: 120px;
+}
+
+.ImagenPrendaCRUD{
+    width: 80px;
+    height: 80px;
+    border-radius: 30px;
+}
+.modal-title{
+    background: #223f3e;
+    text-align: center;
+    border-style: solid;
+    padding: 10px;
+    font-family:sans-serif;
+    font-size: 13.28px;
+    font-weight:700;
+    grid-area:auto;
+}
+.modal-body{
+    margin: 2%;
+    text-align: center;
 }
