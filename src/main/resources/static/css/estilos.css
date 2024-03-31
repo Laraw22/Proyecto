@@ -104,7 +104,11 @@
 .tabla-dar{
     color: #0f2424;
 }
-.tabla-bordered{
+
+.tabla tr:hover{
+    background: #0f2424;
+    
+    
 
 }
 .text-cen{
@@ -124,7 +128,14 @@
     margin: 20px 20px 8% 10px;
     justify-content: center;
     grid-area: auto;
-
+    border-collapse: separate;
+    background: #64afa9;
+}
+.tab{
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+    text-align: center;
 }
 .tabla th{
     background: white;
@@ -133,6 +144,8 @@
     text-justify: auto;
     margin: 8% 2%;
     padding: 4px 1px;
+    border-collapse: collapse ;
+
 }
 .tabla-bordered{
     border: 3px solid white;
@@ -184,10 +197,8 @@
 }
 
 .containe{
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
 
+    align-content: center;
     align-self: center;
     display: grid;
     border: 30px #FD1D1D;
@@ -245,6 +256,7 @@
     padding: 0px 8px;
     margin: 10px 5px 5px 8px;
 }
+
 .descrip_fs{
     height: 5px;
 }
@@ -259,7 +271,7 @@
     text-align: center;
     border-style: solid;
     padding: 10px 20px;
-    
+
 }
 .modal-body{
     margin: 2%;
@@ -302,7 +314,11 @@
     height: 80px;
     border-radius: 30px;
 }
-
+.ImagenC{
+    width: 100px;
+    height: 100px;
+    margin:5%;
+}
 
 
 .containe-agregar{

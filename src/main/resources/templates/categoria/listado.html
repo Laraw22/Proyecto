@@ -6,9 +6,13 @@
     </head>
     <body>
 
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <header th:replace="~{layout/plantilla :: heade}"/>
+        <br>
 
-        
+        <section th:replace="~{categoria/fragmentos :: botonesAgregar}" />        
+        <section th:replace="~{categoria/fragmentos :: agregarCategoria}"/>
+        <section th:replace="~{categoria/fragmentos :: listadoCategorias}" />  
 
         <footer th:replace="~{layout/plantilla :: footer_todo}"/>
     </body>
+</html>

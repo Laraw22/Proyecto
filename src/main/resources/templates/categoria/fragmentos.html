@@ -1,65 +1,190 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:th="http://thymeleaf.org">
-    <body>
-        
-          <section th:fragment="prueba">
-            <article>
-                <h3>Traje Para Hombres</h3>
-                <div class="categoria">
-                    <div class="circu">
-                        <img class="img" src="https://www.trajeselegant.com/nuevo/wp-content/uploads/2021/08/18-e1630450079654.jpg" alt="" />                                                           
-                    </div>
-                    <p class="cateim"><a href="hombres.html">Ver mas</a></p>                                    
-                    <br/>
-                </div>
-            </article>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">    
+    <!--le falta cambiar todo pero por ahorita se muestra solo mover unas cosas y ya estaria -->
 
-            <article>
-                <h3>Traje Para Mujeres</h3>
-                 <div class="categoria">
-                    <div class="circu">
-                        <img class="img" src="https://i.etsystatic.com/31326629/r/il/65e87a/3574970864/il_570xN.3574970864_otyg.jpg" alt="" />                                                           
+    <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+    <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light" >
+        <div class="containe-agregar" >
+            <div class="ro"  >                
+                <button    
+                    id="open"
+                    type="button" 
+                    class="botn-agregar botn-primary botn-block"                     
+                    data-bs-toggle="modal" 
+                    data-bs-target="#agregarCategoria">
+                    <i class="fas fa-plus"></i> Agregar Categoria
+                </button>
+            </div>
+        </div>
+        </div>
+    </section>   
+    
+    <section th:fragment="agregarCategoria">
+            <div id="agregarCategoria" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-infor text-white">
+                            <h5 class="modal-title">Agregar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/categoria/guardar}" th:object="${categoria}"
+                              method="POST" class="was-validated" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="descripcion">Categoria</label>
+                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="activo">Activo</label>
+                                    <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen">Imagen</label>
+                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                    <img id="blah" src="#" alt="Tu imagen" height="200"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="botn botn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
                     </div>
-                    <p class="cateim"><a href="mujeres.html">Ver mas</a></p>                                    
-                    <br/>
                 </div>
-                <br/>
-            </article>
-
-            <article> 
-                <h3>Traje Para Niño</h3>
-                <div class="categoria">
-                    <div class="circu">
-                        <img class="img" src="https://quemono.com/wp-content/uploads/2016/04/traje-chaqueta-ni%C3%B1o-sevilla.jpg" alt="" />                                                           
+            </div>
+        </section>
+    
+    <!--Mostrar el listado de categorias -->
+        <section th:fragment="listadoCategorias" id="categorias">
+            <div class="containe">
+                <div class="ro">
+                    <div class="cen">
+                        <div class="pa">
+                            <div class="pa-header">
+                                <h4>Listado De Categorías</h4>
+                            </div>
+                            <div th:if="${categorias != null and !categorias.empty}">
+                                <table class="tabla tab tabla-bordered separad separador" >
+                                    <thead class="tabla-dar">
+                                        <tr><th>#</th>
+                                            <th>Categoria</th>
+                                            <th>Imagen</th>
+                                            <th>Activo</th>
+                                            
+                                            <th></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="categoria, contador : ${categorias}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${categoria.descripcion}]]</td>
+                                            <td><img class="ImagenC" th:src="${categoria.rutaImagen}" ></td>
+                                            
+                                            <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
+                                            <td>
+                                                <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                                                   class="botn botn-danger">
+                                                    <i class="fas fa-trash"></i> Eliminar</a>
+                                                <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
+                                                   class="botn botn-success">
+                                                    <i class="fas fa-pencil"></i> Actualizar</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${categorias == null or categorias.empty}">
+                                <span>Lista Vacia</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="cateim"><a href="niños.html">Ver mas</a></p>                                    
-                    <br/>
-                </div>
-                    <br/>
-            </article>
-
-            <article> 
-                <h3>Vestidos para Niñas</h3>
-                <div class="categoria">
-                    <div class="circu">
-                        <img class="img" src="https://i.pinimg.com/474x/55/75/19/55751973db2b33127d7a7c72ba477ed2.jpg" alt="" />                                                           
+                    <div class="col-md-3">
+                        <div class="pa text-center bog-success text-white mb-3">
+                            <div class="pa-body">
+                                <h3>Total</h3>
+                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>
+                            </div>
+                        </div>
                     </div>
-                    <p class="cateim"><a href="niñas.html">Ver mas</a></p>                                    
-                    <br/>
                 </div>
-                    <br/>
-            </article>
-            <article>
-                <div>
-                    <h4>Acerca de...</h4>
-                    <p><b>En nuestra refinada tienda de ropa, hemos dedicado meticulosamente nuestras categorías para ofrecer una experiencia de compra única y elegante para cada miembro de la familia. Para los pequeños caballeros, nuestra colección de trajes para niños redefine la moda infantil, fusionando la dulzura de la juventud con detalles sofisticados. Cada traje ha sido diseñado pensando en la comodidad y la elegancia, permitiendo que los niños se expresen con estilo desde una edad temprana.
-                            Nuestra sección de trajes para hombres abarca desde la sastrería clásica hasta las tendencias contemporáneas. Desde trajes a medida para ocasiones especiales hasta conjuntos casuales que reflejan una masculinidad moderna, cada prenda ha sido seleccionada por su calidad y estilo atemporal.
-                            Para las mujeres que buscan la máxima elegancia, nuestra colección de trajes femeninos presenta desde vestidos de noche deslumbrantes hasta conjuntos de trabajo refinados. Cada pieza ha sido cuidadosamente elegida para resaltar la belleza única de cada mujer, ofreciendo opciones que van desde lo clásico hasta lo vanguardista.
-                            En resumen, nuestras categorías de trajes para niños, hombres y mujeres reflejan nuestra dedicación a proporcionar moda elegante para toda la familia, combinando calidad, estilo y atención al detalle en cada prenda.</b></p>
-                </div>                
-            </article>
+            </div>
+        </section>
+    
+     <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarCategoria">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/categoria/guardar}" 
+                          th:object="${categoria}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                        <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="containe">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>Actualizar</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="descripcion">Descripcion</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="descripcion" th:field="*{descripcion}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="activo">Activo</label>
+                                                    <input class="form-check-input" 
+                                                           type="checkbox" 
+                                                           name="activo" 
+                                                           id="activo"
+                                                           th:field="*{activo}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="imagen">Imagen</label>
+                                                    <input class="form-control" type="file" name="imagenFile"
+                                                           onchange="readURL(this);" />
+                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
         </section>
 
-    </body>
-
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/categoria/listado}" class="botn botn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                           class="botn botn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="botn botn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -2,8 +2,8 @@ package com.proyecto.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
 public interface FirebaseStoreService {
+    
      public String cargaImagen(MultipartFile archivoLocalCliente, String carpeta, Long id);
 
     
@@ -16,5 +16,5 @@ public interface FirebaseStoreService {
     final String rutaJsonFile = "firebase";
     
   
-    final String archivoJsonFile = "store-75095-firebase-adminsdk-s2b9s-b1a3af783c.json";
+    final String archivoJsonFile = "store-75095-firebase-adminsdk-s2b9s-1c621565ba.json";
 }
