@@ -4,12 +4,13 @@
     <!--le falta cambiar todo pero por ahorita se muestra solo mover unas cosas y ya estaria -->
 
     <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-    <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-        <div class="container-agregar" id="open">
-            <div class="row">                
-                <button 
+    <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light" >
+        <div class="containe-agregar" >
+            <div class="ro"  >                
+                <button    
+                    id="open"
                     type="button" 
-                    class="btn-agregar btn-primary btn-block"                     
+                    class="botn-agregar botn-primary botn-block"                     
                     data-bs-toggle="modal" 
                     data-bs-target="#agregarRopa">
                     <i class="fas fa-plus"></i> Agregar ropa
@@ -18,19 +19,19 @@
         </div>
         </div>
     </section>   
-    
-    
+
+
     <section th:fragment="agregarRopa">
         <div id="agregarRopa" 
-             class="modal_fade" 
+             class="modal fade" 
              tabindex="-1" 
              aria-labelledby="exampleModalLabel" 
              aria-hidden="true">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
-                    <div class="modal-header bg-info text-white">
+                    <div class="modal-header bg-infor text-white">
                         <h5 class="modal-title">Agregar</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                     </div> 
                     <form th:action="@{/ropa/guardar}" th:object="${ropa}"
                           method="POST" class="was-validated" enctype="multipart/form-data">
@@ -38,8 +39,9 @@
                         <input type="hidden" name="nuevaImagen" value="NO"/>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="idCategoria">Categoria</label>
-                                <select name="categoria.idCategoria" 
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria"
+                                    name="categoria.idCategoria" 
                                         class="form-select" 
                                         aria-label="Default select example">
                                     <option th:each="c : ${categorias}" th:value="${c.idCategoria}" th:text="${c.descripcion}">
@@ -47,13 +49,13 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="descripcion">Descripcion</label>
+                                <label for="ropa">Descripcion</label>
                                 <textarea type="text" class="form-control" name="descripcion" required="true"></textarea>
                             </div>
 
                             <div class="mb-3">
-                                <label for="detalle">Talla</label>                                    
-                                <input class="form-control" name="detalle" rows="3"/>
+                                <label for="talla">Talla</label>                                    
+                                <input class="form-control" name="talla" rows="3"/>
                             </div>
 
                             <div class="mb-3">
@@ -82,14 +84,13 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <button class="botn botn-primary" type="submit">Guardar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <hr/>
-        <br/>
+          <br>
     </section>
 
 
@@ -97,69 +98,72 @@
 
 
 
+  
+        
+            <!-- Para mostrar la ropa -->
+            <section th:fragment="listadoRopas" id="ropas">
+                <div class="containe">
+                    <div class="ro">
+                        <div class="cen">
+                            <div class="pa">
+                                <div class="pa-header">
+                                    <h4 class="text-cen">Lista de ropa</h4>
+                                </div>
+                                <div th:if="${ropas != null and !ropas.empty}">
+                                    <table class="tabla tabla-bordered separador">
+                                        <thead class="tabla-dar">
+                                            <tr><th>#</th>
+                                                <th class="text-cen">Descripcion</th>
+                                                <th class="text-cen">Talla</th>
+                                                <th class="text-cen">Precio</th>
+                                                <th class="text-cen">Stock</th>                                                                                                                           
+                                                <th class="text-cen">Activo</th>
+                                                <th class="text-cen" >Imagen</th>
+                                                <th class="text-cen">Total</th>
+                                                <th></th><th></th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <div>
+                                                <tr th:each="ropa, contador : ${ropas}">
+                                                    <td class="text-cen texto">[[${contador.count}]]</td>
+                                                    <td class="descrip_fs texto">[[${ropa.descripcion}]]</td>
+                                                    <td class="fs-6 texto">[[${ropa.talla}]]</td>
+                                                    <td class="text-end texto">[[${#numbers.formatDecimal(ropa.precio, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
+                                                    <td class="text-cen texto">[[${ropa.existencias}]]</td>                                                                                                                                  
+                                                    <td  class="text-cen texto" th:text="${ropa.activo} ? 'Activa' : 'Inactiva'" />  
+                                                    <td><img class="ImagenPrenda" th:src="${ropa.rutaImagen}" ></td>
 
-    <!-- Para mostrar la ropa -->
-    <section th:fragment="listadoRopas" id="ropas">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="text-center">Lista de ropa</h4>
+
+                                                    <td class="text-end texto">[[${#numbers.formatDecimal(ropa.precio*ropa.existencias, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
+                                                    <td><a th:href="@{/ropa/eliminar/}+${ropa.idRopa}"
+                                                           class="botn botn-danger">
+                                                            <i class="fas fa-trash "></i> Eliminar</a></td>
+                                                    <td>
+                                                        <a th:href="@{/ropa/modificar/}+${ropa.idRopa}"
+                                                           class="botn botn-success">
+                                                            <i class="fas fa-pencil "></i> Actualizar</a></td>
+                                                </tr>                                     
+                                            </div>
+                                            <hr>                                             
+                                        </tbody>                                    
+                                    </table>
+                                </div>
+                                <div class="text-cen p-2" th:if="${ropas == null or ropas.empty}">
+                                    <span>Lista vacia</span>
+                                </div>
+                            </div>
                         </div>
-                        <div th:if="${ropas != null and !ropas.empty}">
-                            <table class="table table-bordered separador">
-                                <thead class="table-dark">
-                                    <tr><th>#</th>
-                                        <th class="text-center">Descripcion</th>
-                                        <th class="text-center">Talla</th>
-                                        <th class="text-center">Precio</th>
-                                        <th class="text-center">Stock</th>                                                                                                                           
-                                        <th class="text-center">Activo</th>
-                                        <th class="text-center" >Imagen</th>
-                                        <th class="text-center">Total</th>
-                                        <th></th><th></th></tr>
-                                </thead>
-                                <tbody>
-                                    <div>
-                                        <tr th:each="ropa, contador : ${ropas}">
-                                            <td class="text-center text">[[${contador.count}]]</td>
-                                            <td class="descrip_fs text">[[${ropa.descripcion}]]</td>
-                                            <td class="fs-6 text">[[${ropa.talla}]]</td>
-                                            <td class="text-end text">[[${#numbers.formatDecimal(ropa.precio, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
-                                            <td class="text-center text">[[${ropa.existencias}]]</td>                                                                                                                                  
-                                            <td  class="text-center text" th:text="${ropa.activo} ? 'Activa' : 'Inactiva'" />  
-                                            <td><img class="ImagenPrenda" th:src="${ropa.rutaImagen}" ></td>
-                                            
-                                            
-                                            <td class="text-end text">[[${#numbers.formatDecimal(ropa.precio*ropa.existencias, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
-                                            <td><a th:href="@{/ropa/eliminar/}+${ropa.idRopa}"
-                                                   class="btn btn-danger">
-                                                    <i class="fas fa-trash "></i> Eliminar</a></td>
-                                            <td>
-                                                <a th:href="@{/ropa/modificar/}+${ropa.idRopa}"
-                                                   class="btn btn-success">
-                                                    <i class="fas fa-pencil "></i> Actualizar</a></td>
-                                        </tr>                                     
-                                    </div>
-                                    <hr>                                             
-                                </tbody>                                    
-                            </table>
-                        </div>
-                        <div class="text-center p-2" th:if="${ropas == null or ropas.empty}">
-                            <span>Lista vacia</span>
+                        <div class="col-md-3">
+                            <div class="pa text-cen bog-success text-white mb-3">
+                                <div class="pa-body">
+                                    <h3>Ropas</h3>
+                                    <h4 class="fs-2"><i class="fas fa-users"></i>[[${totalRopas}]]</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card text-center bg-success text-white mb-3">
-                        <div class="card-body">
-                            <h3>Ropas Totales</h3>
-                            <h4 class="fs-2"><i class="fas fa-users"></i>[[${totalRopas}]]</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
+            
+          

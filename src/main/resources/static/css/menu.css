@@ -24,18 +24,19 @@
 body{
     font-family: sans-serif;
     padding: 80px 20px 0;
+    min-height: 100vh
 }
 
 
 .catego{
     background-color: black;
-    height: 80px;
-    position: solid;
+    height: 80px;   
     width: 100%;
     top:0;
     left:0;
 
 }
+
 .categoria{
     background-color:grey;
     height: 150px;
@@ -47,7 +48,6 @@ body{
 .formulario{
     background-color: black;
     border: 5px solid #740af5;
-    position: solid;
     color: white;
     display: flex;
 }
@@ -58,23 +58,22 @@ body{
     justify-content: space-between;
 }
 
-.nav-link{
+.link{
     color: white;
     text-decoration: none;
 }
 
-.logo{
+.log{
     justify-content: center;
     align-items: center ;
     font-size: 30px;
     font-weight: bold;
     padding: 0 60px;
-    line-height:30px;
-    
+    line-height:30px;    
        
 }
 
-.nav-menu{
+.menu{
     justify-content: center;
     display: flex ;
     flex-direction: initial;
@@ -95,17 +94,17 @@ body{
 
 }
 
-.nav-menu-item{
+.menu-item{
     font-size: 18px;
     margin: 0 10px;
 
 }
 
-.nav-menu-link{
+.menu-link{
     padding: 8px 12px;
     border-radius: 10px;
 }
-.nav-menu-link:hover{
+.menu-link:hover{
     background:#0f2424;
     padding: 8px 12px;
     border-radius: 120px;

@@ -6,26 +6,27 @@
         <meta charset="UTF-8"/>
         <link th:href="@{/css/estilos.css}" rel="stylesheet" type="text/css" />
         <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css" />        
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/js/variasCosas.js}"></script>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>        
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script> 
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script> 
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>            
+        
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> 
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     </head>
     <body>
 
-        <header th:fragment="header" class="header">
+        <header th:fragment="heade" class="header">
 
-            <a th:href="@{/}"class="nav-link logo">Tienda</a>                          
+            <a th:href="@{/}"class="link log">Tienda</a>                          
             <br>
                 <br>
-                    <ul class="nav-menu">                        
-                        <li class="nav-menu-item"><a th:href="@{/}" class="nav-link nav-menu-link ">Inicio</a></li>
-                        <li class="nav-menu-item"><a th:href="@{/categoria/listado}" class="nav-link nav-menu-link ">Categoría</a></li>
-                        <li class="nav-menu-item"><a th:href="@{/ropa/listado}" class="nav-link nav-menu-link">Ropa</a></li>                              
+                    <ul class="menu">                        
+                        <li class="menu-item"><a th:href="@{/}" class="link menu-link ">Inicio</a></li>
+                        <li class="menu-item"><a th:href="@{/categoria/listado}" class="link menu-link ">Categoría</a></li>
+                        <li class="menu-item"><a th:href="@{/ropa/listado}" class="link menu-link">Ropa</a></li>                              
                         <div class="icon-esquin">
                             <a><i class="fa-solid fa-cart-shopping"></i></a>
-                            <a th:href="@{/login/}"> <i class="fa-solid fa-user"></i></a>
+                            <a> <i class="fa-solid fa-user"></i></a>
                         </div>
                     </ul>        
                     <br>
@@ -42,7 +43,7 @@
                                     Para los hombres que buscan elegancia sin esfuerzo, nuestra sección masculina presenta trajes a medida, prendas casuales y accesorios de calidad que reflejan una masculinidad moderna y distinguida.</b></p>            
                             <br/>
                         </aside>
-                        <footer th:fragment="footer_todo" class="footer">
+                        <footer th:fragment="footer_todo" class="foot">
                             <br>
                                 <p>Nuestras Redes</p>
                                 <div class="sociales" aria-hidden="true">                 
@@ -51,5 +52,7 @@
                                     <a href="https://www.facebook.com/?locale=es_LA"><i class="fa-brands fa-facebook"></i></a>                    
                                 </div>
                         </footer>
+                        <script th:src="@{/js/variasCosas.js}"></script>                              
                         </body>
+
                         </html>
