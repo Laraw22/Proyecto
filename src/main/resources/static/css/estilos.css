@@ -298,9 +298,21 @@
 .botn-agregar{
     color:white;
 }
-
+.btn{
+    background: #30716d;
+    
+}
+.btn-success{
+    background: #30716d;
+}
 .DIVImagenPrenda{
     background-color: #30716d;
+}
+.panel-body{
+    background: #64afa9;
+     align-content: center;
+    text-align: center;
+    margin:3%;
 }
 
 .ImagenPrenda{
@@ -323,7 +335,6 @@
 
 .containe-agregar{
     background: #3e8e89;
-
     padding: 10px 10px;
     border: #64afa9 ridge 7px;
     white:white;

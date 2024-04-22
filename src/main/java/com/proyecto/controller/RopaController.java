@@ -1,5 +1,6 @@
 package com.proyecto.controller;
 
+import com.proyecto.domain.Cosas;
 import com.proyecto.domain.Ropa;
 import com.proyecto.service.CategoriaService;
 import com.proyecto.service.RopaService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/ropa")
@@ -74,4 +76,6 @@ public class RopaController {
         return "/ropa/modifica";
     }
 
+      
+    
 }

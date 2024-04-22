@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:th="http://thymeleaf.org"
-      >
+      xmlns:th="http://thymeleaf.org">
+      
     <head th:fragment="head" >
         <title>Store</title>
         <meta charset="UTF-8"/>
         <link th:href="@{/css/estilos.css}" rel="stylesheet" type="text/css" />
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css" />        
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>        
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>        
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script> 
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script> 
@@ -25,8 +26,8 @@
                         <li class="menu-item"><a th:href="@{/categoria/listado}" class="link menu-link ">Categoría</a></li>
                         <li class="menu-item"><a th:href="@{/ropa/listado}" class="link menu-link">Ropa</a></li>                              
                         <div class="icon-esquin">
-                            <a><i class="fa-solid fa-cart-shopping"></i></a>
-                            <a> <i class="fa-solid fa-user"></i></a>
+                            <a th:href="@{/carrito/listado}"><i class="fa-solid fa-cart-shopping"></i></a>                         
+                            <a th:href="@{/login}"><i  class="fa-solid fa-user"></i></a>                                                      
                         </div>
                     </ul>        
                     <br>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">    
-    <!--le falta cambiar todo pero por ahorita se muestra solo mover unas cosas y ya estaria -->
+   
 
     <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
     <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light" >
@@ -69,7 +69,7 @@
                             </div>
                             <div th:if="${categorias != null and !categorias.empty}">
                                 <table class="tabla tab tabla-bordered separad separador" >
-                                    <thead class="tabla-dar">
+                                <thead class="tabla-dar">
                                         <tr><th>#</th>
                                             <th>Categoria</th>
                                             <th>Imagen</th>

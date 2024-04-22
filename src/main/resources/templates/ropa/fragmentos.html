@@ -69,12 +69,12 @@
                             </div>                            
 
                             <div class="mb-3">
-                                    <label for="imagen">Imagen</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);" >
-                                        <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
-                            
+                                <label for="imagen">Imagen</label>
+                                <input class="form-control" type="file" name="imagenFile"
+                                       onchange="readURL(this);" >
+                                    <img id="blah" src="#" alt="your image" height="200"/>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="activo">Activo</label>
                                 <input class="form-check-input" 
@@ -114,7 +114,7 @@
                             <table class="tabla tabla-bordered separador">
                                 <thead class="tabla-dar">
                                     <tr><th>#</th>
-                                        <th class="text-cen">Descripcion</th>
+                                        <th class="text-cen">Descripcion</th>                                        
                                         <th class="text-cen">Talla</th>
                                         <th class="text-cen">Precio</th>
                                         <th class="text-cen">Stock</th>                                                                                                                           
@@ -127,7 +127,7 @@
                                     <div>
                                         <tr th:each="ropa, contador : ${ropas}">
                                             <td class="text-cen texto">[[${contador.count}]]</td>
-                                            <td class="descrip_fs texto">[[${ropa.descripcion}]]</td>
+                                            <td class="descrip_fs texto">[[${ropa.descripcion}]]</td>                                            
                                             <td class="fs-6 texto">[[${ropa.talla}]]</td>
                                             <td class="text-end texto">[[${#numbers.formatDecimal(ropa.precio, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
                                             <td class="text-cen texto">[[${ropa.existencias}]]</td>                                                                                                                                  
@@ -142,7 +142,7 @@
                                             <td>
                                                 <a th:href="@{/ropa/modificar/}+${ropa.idRopa}"
                                                    class="botn botn-success">
-                                                    <i class="fas fa-pencil "></i> Actualizar</a></td>
+                                                    <i class="fas fa-pencil "></i> Actualizar</a></td>                                           
                                         </tr>                                     
                                     </div>
                                     <hr>                                             
